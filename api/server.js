@@ -46,7 +46,7 @@ io.on("connection", socket => {
   socket.on("message", function(data) {
    
       let message = JSON.parse(data);
-
+      console.log(message);
       if (message.message === 'killplayer'){
         for (let i = 0; i < players.length; i++) {
           players[i].socket.send(JSON.stringify({ message:'respawn', position: {x: 0.0, y: 0.0, z: 0.0}, id: message.id}));
