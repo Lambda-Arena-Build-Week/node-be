@@ -26,6 +26,12 @@ server.use(
 let players = [];
 let currentPlayerId = 0;
 
+randomRange = (min, max) => {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min)) + min; 
+}
+
 io.on("connection", socket => {
   socket.send(JSON.stringify({ message: "newid", id: currentPlayerId }));
   players.push({
@@ -48,8 +54,9 @@ io.on("connection", socket => {
       let message = JSON.parse(data);
       console.log(message);
       if (message.message === 'killplayer'){
+        spawn = randomRange(0, 100);
         for (let i = 0; i < players.length; i++) {
-          players[i].socket.send(JSON.stringify({ message:'respawn', position: {x: 0.0, y: 0.0, z: 0.0}, id: message.id}));
+          players[i].socket.send(JSON.stringify({ message:'respawn', position: {spawn}, id: message.id}));
         }
       }
 
