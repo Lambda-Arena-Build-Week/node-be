@@ -57,7 +57,7 @@ io.on("connection", socket => {
     let message = JSON.parse(data);
 
     if (message.message !== 'playerupdate')
-      console.log(message);
+      console.log(message);  
     if (message.message === "killplayer") {
       spawn = randomRange(0, 100);
       for (let i = 0; i < players.length; i++) {
