@@ -61,7 +61,7 @@ io.on("connection", socket => {
         players[i].socket.send(data);
       }
     }
-
+    else
     if (message.message === "killplayer") {
       spawn = randomRange(0, 100);
       for (let i = 0; i < players.length; i++) {
@@ -74,11 +74,12 @@ io.on("connection", socket => {
         );
       }
     }
-
+    else{
     for (let i = 0; i < players.length; i++) {
       if (data.id !== players[i].id && players[i].socket.readyState === 1)
         players[i].socket.send(data);
     }
+  }
 
     for (let i = 0; i < players.length; i++) {
       if (players[i].socket.readyState === 3) {
