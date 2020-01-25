@@ -56,7 +56,7 @@ io.on("connection", socket => {
  
       if (message.message === 'killplayer'){
         spawn = randomRange(0, 100);
-        console.log(spawn);
+ 
         for (let i = 0; i < players.length; i++) {
           players[i].socket.send(JSON.stringify({ message:'respawn', spawn: spawn, id: message.id}));
         }
